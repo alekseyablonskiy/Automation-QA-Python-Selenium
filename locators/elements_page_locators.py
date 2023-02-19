@@ -51,3 +51,16 @@ class WebTablePageLocators:
     ROW_PARENT = './/ancestor::div[@class="rt-tr-group"]'
     UPDATE_BUTTON = (By.CSS_SELECTOR, 'span[title="Edit"]')
     NO_ROWS_FOUND = (By.CSS_SELECTOR, 'div[class="rt-noData"]')
+
+
+class ButtonPageLocators:
+
+    # buttons
+    DOUBLE_CLICK_BUTTON = (By.CSS_SELECTOR, 'button[id="doubleClickBtn"]')
+    RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, 'button[id="rightClickBtn"]')
+    CLICK_ME_BUTTON = (By.XPATH, '//button[text()="Click Me"]')
+
+    # results
+    SUCCESS_DOUBLE = (By.CSS_SELECTOR, 'p[id="doubleClickMessage"]')
+    SUCCESS_RIGHT = (By.CSS_SELECTOR, 'p[id="rightClickMessage"]')
+    SUCCESS_CLICK_ME = (By.CSS_SELECTOR, 'p[id="dynamicClickMessage"]')
