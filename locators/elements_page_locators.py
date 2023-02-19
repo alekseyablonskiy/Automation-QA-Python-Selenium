@@ -18,6 +18,7 @@ class TextBoxPageLocators:
 
 
 class CheckBoxPageLocators:
+
     EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, 'button[title="Expand all"]')
     ITEM_LIST = (By.CSS_SELECTOR, 'span[class="rct-title"]')
     CHECKED_ITEMS = (By.CSS_SELECTOR, 'svg[class="rct-icon rct-icon-check"]')
@@ -26,6 +27,7 @@ class CheckBoxPageLocators:
 
 
 class RadioButtonPageLocators:
+
     YES_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="yesRadio"]')
     IMPRESSIVE_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="impressiveRadio"]')
     NO_RADIOBUTTON = (By.CSS_SELECTOR, 'label[class^="custom-control"][for="noRadio"]')
@@ -64,3 +66,9 @@ class ButtonPageLocators:
     SUCCESS_DOUBLE = (By.CSS_SELECTOR, 'p[id="doubleClickMessage"]')
     SUCCESS_RIGHT = (By.CSS_SELECTOR, 'p[id="rightClickMessage"]')
     SUCCESS_CLICK_ME = (By.CSS_SELECTOR, 'p[id="dynamicClickMessage"]')
+
+
+class LinksPageLocators:
+
+    SIMPLE_LINK = (By.CSS_SELECTOR, 'a[id="simpleLink"]')
+    BAD_REQUEST = (By.CSS_SELECTOR, 'a[id="bad-request"]')
