@@ -1,5 +1,4 @@
 import random
-import time
 
 from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage, \
     UploadDownloadPage, DynamicPropertiesPage
