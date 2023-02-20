@@ -1,12 +1,12 @@
 import random
 
 import requests
-from selenium.webdriver.common.by import By
 
-from generator.generator import generated_person
+from utils.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonPageLocators, LinksPageLocators
+    WebTablePageLocators, ButtonPageLocators, LinksPageLocators, UploadDownloadPageLocators
 from pages.base_page import BasePage
+from utils import path_to_file
 
 
 class TextBoxPage(BasePage):
@@ -177,5 +177,15 @@ class LinksPage(BasePage):
             self.elements_are_present(self.locators.BAD_REQUEST).click()
         else:
             return request.status_code
+
+
+class UploadDownloadPage(BasePage):
+    locators = UploadDownloadPageLocators()
+
+    def upload_file(self):
+        self.element_is_visible(self.locators.UPLOAD_FILE).send_keys(path_to_file.generate_path_upload('picture.jpeg'))
+        text = self.element_is_present(self.locators.UPLOADED_FILE_PATH).text
+        return text
+
 
 

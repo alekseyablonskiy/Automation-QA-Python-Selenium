@@ -1,7 +1,8 @@
 import random
 import time
 
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonPage, LinksPage, \
+    UploadDownloadPage
 
 
 class TestElements:
@@ -74,7 +75,7 @@ class TestElements:
             text = web_table_page.check_deleted_person()
             assert text == 'No rows found'
 
-    class TestButtonsPage:
+    class TestButtons:
         def test_different_click_on_buttons(self, driver):
             button_page = ButtonPage(driver, 'https://demoqa.com/buttons')
             button_page.open()
@@ -85,7 +86,7 @@ class TestElements:
             assert right == 'You have done a right click'
             assert click == 'You have done a dynamic click'
 
-    class TestLinksPage:
+    class TestLinks:
         def test_check_link(self, driver):
             links_page = LinksPage(driver, 'https://demoqa.com/links')
             links_page.open()
@@ -97,3 +98,10 @@ class TestElements:
             links_page.open()
             response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
             assert response_code == 400
+
+    class TestUploadDownload:
+        def test_upload_file(self, driver):
+            upload_download_page = UploadDownloadPage(driver, 'https://demoqa.com/upload-download')
+            upload_download_page.open()
+            path = upload_download_page.upload_file()
+            assert path == r'C:\fakepath\picture.jpeg'
