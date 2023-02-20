@@ -1,10 +1,12 @@
 import random
+import time
 
 import requests
 
 from utils.generator import generated_person
 from locators.elements_page_locators import TextBoxPageLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators, ButtonPageLocators, LinksPageLocators, UploadDownloadPageLocators
+    WebTablePageLocators, ButtonPageLocators, LinksPageLocators, UploadDownloadPageLocators, \
+    DynamicPropertiesPageLocators
 from pages.base_page import BasePage
 from utils import path_to_file
 
@@ -186,6 +188,33 @@ class UploadDownloadPage(BasePage):
         self.element_is_visible(self.locators.UPLOAD_FILE).send_keys(path_to_file.generate_path_upload('picture.jpeg'))
         text = self.element_is_present(self.locators.UPLOADED_FILE_PATH).text
         return text
+
+
+class DynamicPropertiesPage(BasePage):
+    locators = DynamicPropertiesPageLocators()
+
+    def check_enable_button(self):
+        try:
+            self.element_is_clickable(self.locators.ENABLE_BUTTON)
+        except TimeoutError:
+            return False
+        return True
+
+    def check_changed_of_color(self):
+        color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
+        color_before_button = color_button.value_of_css_property('color')
+        time.sleep(5)
+        color_after_button = color_button.value_of_css_property('color')
+        return color_before_button, color_after_button
+
+    def check_appear_button(self):
+        try:
+            self.element_is_visible(self.locators.VISIBLE_AFTER_FIVE_SEC_BUTTON)
+        except TimeoutError:
+            return False
+        return True
+
+
 
 
 
